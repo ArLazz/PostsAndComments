@@ -13,6 +13,8 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+const numOfAttempts = 10
+
 type PostgresDB struct {
 	DB *sql.DB
 }
@@ -122,7 +124,7 @@ func (db *PostgresDB) GetCommentById(ctx context.Context, id string) (*model.Com
 	if err != nil {
 		return nil, err
 	}
-	
+
 	return &comment, nil
 }
 
@@ -177,8 +179,8 @@ func (db *PostgresDB) GetComments(ctx context.Context, postId string, limit *int
 func connectToDB(psqlInfo string) (*sql.DB, error) {
 	var db *sql.DB
     var err error
-	for i := 1; i < 11; i++{
-		logrus.Infof("waiting for inicialization of db, attempt %d", i)
+	for attempt := 1; attempt <= numOfAttempts; attempt++{
+		logrus.Infof("waiting for inicialization of db, attempt %d", attempt)
 		time.Sleep(time.Second)
         db, err = sql.Open("postgres", psqlInfo)
         if err != nil {
