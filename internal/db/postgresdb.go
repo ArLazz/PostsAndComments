@@ -7,7 +7,7 @@ import (
 	"log"
 	"time"
 
-	"postsandcomments/graph/model"
+	"postsandcomments/internal/graph/model"
 
 	_ "github.com/lib/pq"
 	"github.com/sirupsen/logrus"

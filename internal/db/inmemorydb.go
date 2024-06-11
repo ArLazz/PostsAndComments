@@ -3,7 +3,7 @@ package db
 import (
 	"context"
 	"fmt"
-	"postsandcomments/graph/model"
+	"postsandcomments/internal/graph/model"
 	"sync"
 )
 

@@ -3,14 +3,9 @@ package main
 import (
 	"flag"
 	"log"
-	"net/http"
 	"postsandcomments/configs"
-	"postsandcomments/graph"
 	"postsandcomments/internal/db"
-
-	"github.com/99designs/gqlgen/graphql/handler"
-	"github.com/99designs/gqlgen/graphql/playground"
-	"github.com/sirupsen/logrus"
+	"postsandcomments/internal/server"
 	"github.com/spf13/viper"
 )
 
@@ -20,7 +15,7 @@ const (
 	PostgreStorage  string = "postgres"
 )
 
-func main() {
+func main(){
 	if err := configs.InitConfig(); err != nil {
 		log.Fatalf("error to open config: %v", err)
 	}
@@ -52,20 +47,5 @@ func main() {
 		log.Fatalf("invalid storage type. Use --storage-type either memory or postgres.")
 	}
 
-	cfg := graph.Config{
-		Resolvers: &graph.Resolver{
-			DataBase:            dataBase,
-			SubscriptionManager: graph.NewSubscriptionManager(),
-			Logger:              logrus.New(),
-		},
-	}
-
-	srv := handler.NewDefaultServer(graph.NewExecutableSchema(cfg))
-
-	http.Handle("/", playground.Handler("GraphQL playground", "/query"))
-	http.Handle("/query", srv)
-
-	log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
-	log.Fatal(http.ListenAndServe(":"+port, nil))
+	server.StartServer(port, dataBase)
 }
-

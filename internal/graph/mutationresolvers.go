@@ -3,7 +3,7 @@ package graph
 import (
 	"context"
 	"fmt"
-	"postsandcomments/graph/model"
+	"postsandcomments/internal/graph/model"
 	"unicode/utf8"
 
 	"github.com/google/uuid"

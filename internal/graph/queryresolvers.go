@@ -3,7 +3,7 @@ package graph
 import (
 	"context"
 	"fmt"
-	"postsandcomments/graph/model"
+	"postsandcomments/internal/graph/model"
 )
 
 func (r *queryResolver) Posts(ctx context.Context) ([]*model.Post, error) {

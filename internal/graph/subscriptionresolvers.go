@@ -2,7 +2,7 @@ package graph
 
 import (
 	"context"
-	"postsandcomments/graph/model"
+	"postsandcomments/internal/graph/model"
 	"sync"
 )
 

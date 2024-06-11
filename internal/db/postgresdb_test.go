@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"postsandcomments/graph/model"
+	"postsandcomments/internal/graph/model"
 	"postsandcomments/internal/db"
 
 	"github.com/google/uuid"

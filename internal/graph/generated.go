@@ -9,7 +9,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"postsandcomments/graph/model"
+	"postsandcomments/internal/graph/model"
 	"strconv"
 	"sync"
 	"sync/atomic"

@@ -2,7 +2,7 @@ package db
 
 import (
 	"context"
-	"postsandcomments/graph/model"
+	"postsandcomments/internal/graph/model"
 )
 
 type Database interface {

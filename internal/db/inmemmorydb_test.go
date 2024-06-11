@@ -2,7 +2,7 @@ package db_test
 
 import (
 	"context"
-	"postsandcomments/graph/model"
+	"postsandcomments/internal/graph/model"
 	"postsandcomments/internal/db"
 	"testing"
 

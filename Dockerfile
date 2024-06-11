@@ -6,7 +6,7 @@ COPY ./ ./
 
 RUN go mod download
 
-RUN go build -o /postandcomments
+RUN go build -o /postandcomments ./cmd/postandcomments
 
 EXPOSE 8080 
 
